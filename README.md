@@ -1,4 +1,5 @@
-# Facebook Itinerary WebApp/iOS/Pebble
+# Journ.io
+***Facebook Itinerary WebApp/iOS/Pebble***
 
 ##Goal: 
 
