@@ -1,16 +1,23 @@
 var app = angular.module('journio', ['ngRoute']);
+var myEvents = [];
 
 app.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'partials/login.html',
       controller: 'EventsController'
+    })
+    .when('/events', {
+      templateUrl: 'partials/events.html',
+      controller: 'EventsController'
+    })
+    .otherwise({
+      redirectTo: '/'
     });
 });
 
-app.controller('EventsController', ['$scope', function ($scope) {
+app.controller('EventsController', ['$scope', '$window', function ($scope, $window) {
   $scope.events = [];
-
   //FACEBOOK API CALL
       // This is called with the results from from FB.getLoginStatus().
       function statusChangeCallback(response) {
@@ -23,6 +30,10 @@ app.controller('EventsController', ['$scope', function ($scope) {
         if (response.status === 'connected') {
           // Logged into your app and Facebook.
           testAPI();
+          $scope.getEvents();
+          $window.location.href = '#/events';
+          $scope.events = myEvents;
+          console.log('NEW EVENTS =', $scope.events);
         } else if (response.status === 'not_authorized') {
           // The person is logged into Facebook, but not your app.
           document.getElementById('status').innerHTML = 'Please log ' +
@@ -46,30 +57,29 @@ app.controller('EventsController', ['$scope', function ($scope) {
       }
 
       window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '1675771156002308',
-        cookie     : true,  // enable cookies to allow the server to access
-                            // the session
-        xfbml      : true,  // parse social plugins on this page
-        version    : 'v2.2' // use version 2.2
-      });
+        FB.init({
+          appId      : '1675771156002308',
+          cookie     : true,  // enable cookies to allow the server to access
+                              // the session
+          xfbml      : true,  // parse social plugins on this page
+          version    : 'v2.2' // use version 2.2
+        });
 
-      // Now that we've initialized the JavaScript SDK, we call
-      // FB.getLoginStatus().  This function gets the state of the
-      // person visiting this page and can return one of three states to
-      // the callback you provide.  They can be:
-      //
-      // 1. Logged into your app ('connected')
-      // 2. Logged into Facebook, but not your app ('not_authorized')
-      // 3. Not logged into Facebook and can't tell if they are logged into
-      //    your app or not.
-      //
-      // These three cases are handled in the callback function.
+        // Now that we've initialized the JavaScript SDK, we call
+        // FB.getLoginStatus().  This function gets the state of the
+        // person visiting this page and can return one of three states to
+        // the callback you provide.  They can be:
+        //
+        // 1. Logged into your app ('connected')
+        // 2. Logged into Facebook, but not your app ('not_authorized')
+        // 3. Not logged into Facebook and can't tell if they are logged into
+        //    your app or not.
+        //
+        // These three cases are handled in the callback function.
 
-      FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-      });
-
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
       };
 
       // Load the SDK asynchronously
@@ -101,7 +111,7 @@ app.controller('EventsController', ['$scope', function ($scope) {
       {"fields": "id,name,events"},
       function (response) {
         if (response) {
-          $scope.events = response.events.data;
+          myEvents = response.events.data;
           console.log("API RESPONSE = ", response);
           console.log('EVENTS =', $scope.events);
         }
