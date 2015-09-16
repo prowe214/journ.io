@@ -1,6 +1,8 @@
 # Journ.io
 ***Facebook Itinerary WebApp/iOS/Pebble***
 
+***NOTE:*** *Due to domain restrictions from Facebook, while in development, testing only functions on `localhost:8080`.  This will change upon final deployment.*
+
 ##Goal: 
 
 Itinerary builder that utilizes the FB Graph API to load up event information, display it in itinerary form with expandable information, location data, and tickets stored.  Comes with an iOS application for when youu're actually traveling, and a Pebble app for when you're walking through an airport with your hands full.  And because it uses your FB events, it comes with all the added benefits of automatic Facebook bragging :)  Could be expanded to store uploaded pictures from each event, or from the trip as a whole!
