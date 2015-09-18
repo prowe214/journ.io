@@ -16,13 +16,30 @@ app.config(function ($routeProvider) {
     });
 });
 
-app.controller('EventsController', ['$scope', '$window', function ($scope, $window) {
-  $scope.events = [];
+app.factory('facebookService', function($q) {
+    return {
+        getEvents: function() {
+            var deferred = $q.defer();
+            FB.api('/me', {
+                fields: 'id,name,events'
+            }, function(response) {
+                if (!response || response.error) {
+                    deferred.reject('Error occured');
+                } else {
+                    deferred.resolve(response);
+                }
+            });
+            return deferred.promise;
+        }
+    };
+});
+
+app.controller('EventsController', ['$scope', '$window', 'facebookService', function ($scope, $window, facebookService) {
   //FACEBOOK API CALL
       // This is called with the results from from FB.getLoginStatus().
       function statusChangeCallback(response) {
         console.log('statusChangeCallback');
-        console.log(response);
+        // console.log('AUTH OBJECT =', response);
         // The response object is returned with a status field that lets the
         // app know the current login status of the person.
         // Full docs on the response object can be found in the documentation
@@ -30,10 +47,11 @@ app.controller('EventsController', ['$scope', '$window', function ($scope, $wind
         if (response.status === 'connected') {
           // Logged into your app and Facebook.
           testAPI();
-          $scope.getEvents();
-          $window.location.href = '#/events';
-          $scope.events = myEvents;
-          console.log('NEW EVENTS =', $scope.events);
+          console.log('CONNECTING');
+          $scope.pullEvents();
+          // $scope.getEvents();
+          // $scope.events = myEvents;
+          // $window.location.href = '#/events';
         } else if (response.status === 'not_authorized') {
           // The person is logged into Facebook, but not your app.
           document.getElementById('status').innerHTML = 'Please log ' +
@@ -102,20 +120,16 @@ app.controller('EventsController', ['$scope', '$window', function ($scope, $wind
         });
       }
   // END FACEBOOK API CALL
-
-  $scope.message = 'TEST MESSAGE';
-  $scope.getEvents = function () {
-    FB.api(
-      '/me',
-      'GET',
-      {"fields": "id,name,events"},
-      function (response) {
-        if (response) {
-          myEvents = response.events.data;
-          console.log("API RESPONSE = ", response);
-          console.log('EVENTS =', $scope.events);
-        }
-      }
-    );
+  $scope.pullEvents = function () {
+    console.log('PULLING EVENTS');
+          facebookService.getEvents()
+            .then(function (data) {
+              console.log('IN THEN STATEMENT');
+              console.log('THIS IS THE THING YOURE LOOKING FOR!!!');
+              console.log('DATA =', data);
+              $scope.FBevents = data.events.data;
+              console.log('EVENTS FOR REAL =', $scope.FBevents);
+          });
   };
+  $scope.message = 'TEST MESSAGE';
 }]);

@@ -10,6 +10,7 @@
     <script type="text/javascript" src="js/controllers.js"></script>
   </head>
   <body ng-controller="EventsController">
+    <h4 style="color: red;"><strong><em>CURRENT OBJECTIVE:  Display Facebook events on index page for user.</em></strong></h4>
     <div id="fb-root"></div>
     <script src="js/fbinit.js"></script>
 
@@ -18,11 +19,17 @@
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>
 
-    <a href="#" ng-click="FB.logout()">LOG OUT</a>
+    <a href="/" ng-click="FB.logout()">LOG OUT</a>
 
     <div id="status">
     </div>
-    <div ng-view></div>
+
+              <h2>in events</h2>
+              <h3>{{message}}</h3>
+              <div ng-repeat="e in FBevents" style="border: 1px solid blue;">
+                <h2 style="background-color: red; display: inline-block;">EVENT!</h2>
+                <h3>{{e.name}}</h3>
+              </div>
     <!--
       Below we include the Login Button social plugin. This button uses
       the JavaScript SDK to present a graphical Login button that triggers
