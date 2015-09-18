@@ -59,3 +59,16 @@ Show
 
 Mobile
 ![image](http://i.imgur.com/xDlFvT2.png)
+
+
+====
+
+## Progress
+
+### After getting data from facebook and minimal styling
+
+***Desktop***
+![image](http://i.imgur.com/h3OFktx.png)
+
+***Mobile***
+![image](http://i.imgur.com/wBVE5v5.png)
