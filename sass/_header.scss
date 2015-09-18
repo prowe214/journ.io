@@ -1,0 +1,28 @@
+header {
+  background-color: black;
+  margin: 0;
+  color: white;
+
+  h1 {
+    margin: 0;
+    padding: 3%;
+    font-weight: lighter;
+  }
+  .login {
+    float: right;
+    margin-top: 3%;
+    margin-right: 3%;
+  }
+
+  a {
+    color: white;
+    font-weight: lighter;
+    text-decoration: none;
+    display: inline-block;
+    background-color: rgba(255,255,255,.7);
+    padding: 3%;
+    width: 70px;
+    text-align: center;
+    border-radius: 3px;
+  }
+}

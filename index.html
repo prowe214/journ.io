@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Journ.io</title>
+    <link rel="stylesheet" href="css/manifest.css">
     <script src="http://connect.facebook.net/en_US/all.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script type="text/javascript" src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
@@ -10,26 +11,37 @@
     <script type="text/javascript" src="js/controllers.js"></script>
   </head>
   <body ng-controller="EventsController">
-    <h4 style="color: red;"><strong><em>CURRENT OBJECTIVE:  Display Facebook events on index page for user.</em></strong></h4>
     <div id="fb-root"></div>
     <script src="js/fbinit.js"></script>
 
-    <h1>Journio</h1>
+    <header>
+      <div class="login">
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
 
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-    </fb:login-button>
+        <a href="/" ng-click="FB.logout()">Log Out</a>
+        <div id="status"></div>
+      </div>
+      <h1>Journio</h1>
+    </header>
 
-    <a href="/" ng-click="FB.logout()">LOG OUT</a>
-
-    <div id="status">
-    </div>
-
-              <h2>in events</h2>
-              <h3>{{message}}</h3>
-              <div ng-repeat="e in FBevents" style="border: 1px solid blue;">
-                <h2 style="background-color: red; display: inline-block;">EVENT!</h2>
-                <h3>{{e.name}}</h3>
-              </div>
+    <h4 style="color: red;"><strong><em>CURRENT OBJECTIVE:  Display events between two given dates.</em></strong></h4>
+    <main>
+      <div class="post" >
+        <h2>SAMPLE</h2>
+        <h3>Jan 1 2015</h3>
+        <h3>Some Awesome Place</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, aspernatur nostrum? Corporis quas dignissimos a sed, facere sunt ipsam facilis eveniet incidunt ducimus error aspernatur assumenda doloribus veniam quidem cupiditate!</p>
+        <a href="https://www.facebook.com/events/12342341423412">Visit Facebook Event Page</a>
+      </div>
+      <div class="post" ng-repeat="e in FBevents" >
+        <h2>{{e.name}}</h2>
+        <h3>{{e.start_time | date: 'medium'}}</h3>
+        <h3>{{e.place.name}}</h3>
+        <p>{{e.description}}</p>
+        <a href="https://www.facebook.com/events/{{e.id}}">Visit Facebook Event Page</a>
+      </div>
+    </main>
     <!--
       Below we include the Login Button social plugin. This button uses
       the JavaScript SDK to present a graphical Login button that triggers

@@ -1,0 +1,50 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  font-family: sans-serif; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+body {
+  background-image: url("../images/halftone-light-effects.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
+
+header {
+  background-color: black;
+  margin: 0;
+  color: white; }
+  header h1 {
+    margin: 0;
+    padding: 3%;
+    font-weight: lighter; }
+  header .login {
+    float: right;
+    margin-top: 3%;
+    margin-right: 3%; }
+  header a {
+    color: white;
+    font-weight: lighter;
+    text-decoration: none;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 3%;
+    width: 70px;
+    text-align: center;
+    border-radius: 3px; }
+
+main {
+  margin-top: 10px;
+  margin-left: 3%;
+  margin-right: 3%; }
+  main .post {
+    padding: 3%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 3px; }
+    main .post h2, main .post h3, main .post h4, main .post h5, main .post p {
+      margin: 0;
+      padding: 0; }

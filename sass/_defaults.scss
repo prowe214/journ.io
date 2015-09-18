@@ -1,0 +1,19 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+}
+
+body {
+  background-image: url('../images/halftone-light-effects.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
