@@ -4,11 +4,25 @@
     <meta charset="utf-8">
     <title>Journ.io</title>
     <link rel="stylesheet" href="css/manifest.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="http://connect.facebook.net/en_US/all.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script type="text/javascript" src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+    $('.datepicker').each(function () {
+      $(this).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        showOn: 'button',
+        buttonImage: 'jquery/images/calendar.gif',
+        buttonImageOnly: true
+      });
+    });
+    </script>
   </head>
   <body ng-controller="EventsController">
     <div id="fb-root"></div>
@@ -27,6 +41,13 @@
 
     <h4 style="color: red;"><strong><em>CURRENT OBJECTIVE:  Display events between two given dates.</em></strong></h4>
     <main>
+      <div class='dates'>
+        <h3 id="dateheader">I'm traveling...</h3>
+        <label for="dateFrom">From:</label>
+          <input type="date" name="dateFrom" ng-model="dateFrom" class="datepicker" id="date_1">
+        <label for="dateTo">To:</label>
+          <input type="date" name="dateTo" ng-model="dateTo" class="datepicker" id='date_2'>
+      </div>
       <div class="post" >
         <h2>SAMPLE</h2>
         <h3>Jan 1 2015</h3>
