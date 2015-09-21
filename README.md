@@ -15,6 +15,7 @@ Itinerary builder that utilizes the FB Graph API to load up event information, d
 - Sass
 - Handlebars
 - Swift
+- Google Calendar API
 
 ### Notable Limits:
 
@@ -35,6 +36,7 @@ Itinerary builder that utilizes the FB Graph API to load up event information, d
 - Add files that store to each event object (tickets, reservation confirmation, etc)
 - Search events by name, location, anything.
 - upload pictures to each individual event
+- Include ability to link Google Calendar (would allow user to post new events which syncs with their calendar) [link to docs](https://developers.google.com/google-apps/calendar/create-events)
 
 ### Tier 3 - Native Mobile Application with Swift
 
