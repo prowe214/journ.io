@@ -1,4 +1,4 @@
-app.controller('EventsController', ['$scope', '$window', 'facebookService', function ($scope, $window, facebookService) {
+myApp.controller('EventsController', ['$scope', '$window', 'facebookService', function ($scope, $window, facebookService) {
   //FACEBOOK API CALL
       // This is called with the results from from FB.getLoginStatus().
       function statusChangeCallback(response) {

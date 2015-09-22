@@ -1,5 +1,5 @@
 
-app.config(function ($routeProvider) {
+myApp.config(function ($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'partials/login.html',

@@ -1,5 +1,5 @@
 
-app.factory('facebookService', function($q) {
+myApp.factory('facebookService', function($q) {
   return {
     getEvents: function() {
         var deferred = $q.defer();
