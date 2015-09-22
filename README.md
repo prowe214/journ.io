@@ -1,7 +1,9 @@
 # Journ.io
 ***Facebook Itinerary WebApp/iOS/Pebble***
 
-***NOTE:*** *Due to domain restrictions from Facebook, while in development, testing only functions on `localhost:8080`.  This will change upon final deployment.*
+***NOTE:*** *Due to domain restrictions from Facebook, while in development, testing only functions on `localhost`.  This will change upon final deployment.*
+
+### [Deployed to Bluemix at `http://journio.mybluemix.net/`](http://journio.mybluemix.net/)
 
 ##Goal: 
 
