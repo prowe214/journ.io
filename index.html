@@ -5,11 +5,15 @@
     <title>Journ.io</title>
     <link rel="stylesheet" href="css/manifest.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="http://connect.facebook.net/en_US/all.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script type="text/javascript" src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="js/routes.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/filters.js"></script>
+    <script type="text/javascript" src="js/factories.js"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script>
@@ -17,6 +21,7 @@
       $(this).datepicker({
         changeMonth: true,
         changeYear: true,
+        dateFormat: 'yy-mm-ddT00:00:00-0600',     // FB RETURNS 2015-10-31T19:00:00-0600
         showOn: 'button',
         buttonImage: 'jquery/images/calendar.gif',
         buttonImageOnly: true
@@ -48,25 +53,28 @@
         <label for="dateTo">To:</label>
           <input type="date" name="dateTo" ng-model="dateTo" class="datepicker" id='date_2'>
       </div>
-      <div class="post" >
+      <!-- <div class="post" >
         <h2>SAMPLE</h2>
         <h3>Jan 1 2015</h3>
         <h3>Some Awesome Place</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, aspernatur nostrum? Corporis quas dignissimos a sed, facere sunt ipsam facilis eveniet incidunt ducimus error aspernatur assumenda doloribus veniam quidem cupiditate!</p>
         <a href="https://www.facebook.com/events/12342341423412">Visit Facebook Event Page</a>
-      </div>
-      <div class="post" ng-repeat="e in FBevents" >
+      </div> -->
+      <div class="post" ng-repeat="e in FBevents|dateFilter:dateFrom:dateTo" >
         <h2>{{e.name}}</h2>
-        <h3>{{e.start_time | date: 'medium'}}</h3>
+        <h3>{{e.start_time | date: 'medium'}}</h3>  <!--GOAL: 2015-10-31T19:00:00-0600--> <!--yyyy-mm-ddTHH:mm:ss-Z-->
         <h3>{{e.place.name}}</h3>
-        <p>{{e.description}}</p>
+        <p ng-repeat="paragraph in e.description|richText track by $index">{{paragraph}}</p>
         <a href="https://www.facebook.com/events/{{e.id}}">Visit Facebook Event Page</a>
       </div>
     </main>
-    <!--
-      Below we include the Login Button social plugin. This button uses
-      the JavaScript SDK to present a graphical Login button that triggers
-      the FB.login() function when clicked.
-    -->
+    <footer>
+      <hr>
+      <!-- <p>Created by Paul Cullen Rowe<span class="links">
+        <a href="https://github.com/prowe214/"><i class="fa fa-github-square"></i></a>
+        <a href="https://www.linkedin.com/in/paulcullenrowe"><i class="fa fa-linkedin-square"></i></a>
+        <a href="https://twitter.com/prowe214"><i class="fa fa-twitter-square"></i></a>
+      </span></p> -->
+    </footer>
   </body>
 </html>

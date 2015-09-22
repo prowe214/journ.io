@@ -25,7 +25,8 @@ header {
   header .login {
     float: right;
     margin-top: 3%;
-    margin-right: 3%; }
+    margin-right: 3%;
+    font-size: small; }
   header a {
     color: white;
     font-weight: lighter;
@@ -40,11 +41,26 @@ header {
 main {
   margin-top: 10px;
   margin-left: 3%;
-  margin-right: 3%; }
+  margin-right: 3%;
+  margin-bottom: 10px; }
   main .post {
     padding: 3%;
-    background-color: rgba(255, 255, 255, 0.7);
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 3px; }
     main .post h2, main .post h3, main .post h4, main .post h5, main .post p {
       margin: 0;
       padding: 0; }
+  main .hidden {
+    display: none; }
+
+footer {
+  color: rgba(255, 255, 255, 0.75);
+  padding-bottom: 10px; }
+  footer a {
+    color: rgba(255, 255, 255, 0.75); }
+  footer p {
+    padding-left: 3%;
+    padding-right: 3%; }
+  footer .links {
+    float: right; }
