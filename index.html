@@ -30,6 +30,10 @@
     </script>
   </head>
   <body ng-controller="EventsController">
+    <video autoplay loop poster="polina.jpg" id="bgvid">
+        <source src="/images/tetons.webm" type="video/webm">
+        <source src="polina.mp4" type="video/mp4">
+    </video>
     <div id="fb-root"></div>
     <script src="js/fbinit.js"></script>
 
@@ -38,14 +42,14 @@
         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
         </fb:login-button>
 
-        <a href="/#/logout" ng-click="logout()">Log Out</a>
+        <a href="/#/logout" id="logout" ng-click="logout()">Log Out</a>
       </div>
       <h1>Journio</h1>
     </header>
     <div id="status"></div>
 
     <div style="background: red; padding: 5px;">
-      <h4 style="color: white;"><strong><em>CURRENT OBJECTIVE:  Display events between two given dates.</em></strong></h4>
+      <h4 style="color: white;"><strong><em>CURRENT OBJECTIVE:  Style for optimum user experience with current product.</em></strong></h4>
     </div>
     <main>
       <div class='dates'>

@@ -13,17 +13,20 @@ header {
     margin-top: 3%;
     margin-right: 3%;
     font-size: small;
-  }
 
-  a {
-    color: white;
-    font-weight: lighter;
-    text-decoration: none;
-    display: inline-block;
-    background-color: rgba(255,255,255,.7);
-    padding: 3%;
-    width: 70px;
-    text-align: center;
-    border-radius: 3px;
+    #logout {
+      color: white;
+      font-weight: lighter;
+      text-decoration: none;
+      display: inline-block;
+      background-color: rgba(62,88,164,1);
+      padding: 2.6%;
+      width: 70px;
+      text-align: center;
+      border-radius: 2px;
+      position: relative;
+      bottom: 3px;
+      font-size: small;
+    }
   }
 }

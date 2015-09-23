@@ -8,11 +8,24 @@ body, html {
   height: 100%; }
 
 body {
-  background-image: url("../images/tetons.gif");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed; }
+
+video#bgvid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background: url(../images/tetons-static.jpg) no-repeat;
+  background-size: cover; }
 
 header {
   background-color: black;
@@ -27,16 +40,19 @@ header {
     margin-top: 3%;
     margin-right: 3%;
     font-size: small; }
-  header a {
-    color: white;
-    font-weight: lighter;
-    text-decoration: none;
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 3%;
-    width: 70px;
-    text-align: center;
-    border-radius: 3px; }
+    header .login #logout {
+      color: white;
+      font-weight: lighter;
+      text-decoration: none;
+      display: inline-block;
+      background-color: #3e58a4;
+      padding: 2.6%;
+      width: 70px;
+      text-align: center;
+      border-radius: 2px;
+      position: relative;
+      bottom: 3px;
+      font-size: small; }
 
 main {
   margin-top: 10px;

@@ -12,9 +12,23 @@ body, html {
 
 body {
   // background-image: url('../images/halftone-light-effects.jpg');
-  background-image: url('../images/tetons.gif');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+video#bgvid {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(../images/tetons-static.jpg) no-repeat;
+    background-size: cover;
 }
