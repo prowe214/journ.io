@@ -6,8 +6,17 @@ myApp.filter('richText', function () {
 });
 
 myApp.filter('dateFilter', function () {
-  return function (input) {
+  return function (input, scope) {
+    var results = [];
     console.log('INPUT', input);
-    return;
+    input.forEach(function (item) {
+      if (item.start_time > Date.now()) {
+        if (item.start_time > scope.startDate && item.start_time < scope.endDate) {
+          console.log('HOLY SHIT ITS WORKING');
+          results.push(item);
+        }
+      }
+    });
+    return results;
   };
 });

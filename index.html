@@ -57,7 +57,7 @@
             <input type="date" name="dateTo" ng-model="dateTo" class="datepicker" ng-change="parseDateTo(dateTo)" id='date_2'>
         </form>
       </div>
-      <div class="post" ng-repeat="e in FBevents | dateFilter | orderBy: 'start_time'" >
+      <div class="post" ng-repeat="e in FBevents | dateFilter:this | orderBy: 'start_time'" >
         <h2>{{e.name}}</h2>
         <h3>{{e.start_time | date}}</h3>
         <h3>{{e.place.name}}</h3>
