@@ -22,7 +22,6 @@
       $(this).datepicker({
         changeMonth: true,
         changeYear: true,
-        dateFormat: 'yy-mm-ddT00:00:00-0600',     // FB RETURNS 2015-10-31T19:00:00-0600
         showOn: 'button',
         buttonImage: 'jquery/images/calendar.gif',
         buttonImageOnly: true
@@ -39,43 +38,40 @@
         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
         </fb:login-button>
 
-        <a href="/" ng-click="FB.logout()">Log Out</a>
+        <a href="/#/logout" ng-click="logout()">Log Out</a>
       </div>
       <h1>Journio</h1>
     </header>
     <div id="status"></div>
 
-    <h4 style="color: red;"><strong><em>CURRENT OBJECTIVE:  Display events between two given dates.</em></strong></h4>
+    <div style="background: red; padding: 5px;">
+      <h4 style="color: white;"><strong><em>CURRENT OBJECTIVE:  Display events between two given dates.</em></strong></h4>
+    </div>
     <main>
       <div class='dates'>
-        <h3 id="dateheader">I'm traveling...</h3>
-        <label for="dateFrom">From:</label>
-          <input type="date" name="dateFrom" ng-model="dateFrom" class="datepicker" id="date_1">
-        <label for="dateTo">To:</label>
-          <input type="date" name="dateTo" ng-model="dateTo" class="datepicker" id='date_2'>
+        <form action="/">
+          <h3 id="dateheader">I'm traveling...</h3>
+          <label for="dateFrom">From:</label>
+            <input type="date"  name="dateFrom" ng-model="dateFrom" class="datepicker" ng-change="parseDateFrom(dateFrom)" id="date_1">
+          <label for="dateTo">To:</label>
+            <input type="date" name="dateTo" ng-model="dateTo" class="datepicker" ng-change="parseDateTo(dateTo)" id='date_2'>
+        </form>
       </div>
-      <!-- <div class="post" >
-        <h2>SAMPLE</h2>
-        <h3>Jan 1 2015</h3>
-        <h3>Some Awesome Place</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, aspernatur nostrum? Corporis quas dignissimos a sed, facere sunt ipsam facilis eveniet incidunt ducimus error aspernatur assumenda doloribus veniam quidem cupiditate!</p>
-        <a href="https://www.facebook.com/events/12342341423412">Visit Facebook Event Page</a>
-      </div> -->
-      <div class="post" ng-repeat="e in FBevents|dateFilter:dateFrom:dateTo" >
+      <div class="post" ng-repeat="e in FBevents | dateFilter | orderBy: 'start_time'" >
         <h2>{{e.name}}</h2>
-        <h3>{{e.start_time | date: 'medium'}}</h3>  <!--GOAL: 2015-10-31T19:00:00-0600--> <!--yyyy-mm-ddTHH:mm:ss-Z-->
+        <h3>{{e.start_time | date}}</h3>
         <h3>{{e.place.name}}</h3>
-        <p ng-repeat="paragraph in e.description|richText track by $index">{{paragraph}}</p>
+        <p ng-repeat="paragraph in e.description | richText track by $index">{{paragraph}}</p>
         <a href="https://www.facebook.com/events/{{e.id}}">Visit Facebook Event Page</a>
       </div>
     </main>
     <footer>
       <hr>
-      <!-- <p>Created by Paul Cullen Rowe<span class="links">
+      <p>Created by Paul Cullen Rowe<span class="links">
         <a href="https://github.com/prowe214/"><i class="fa fa-github-square"></i></a>
         <a href="https://www.linkedin.com/in/paulcullenrowe"><i class="fa fa-linkedin-square"></i></a>
         <a href="https://twitter.com/prowe214"><i class="fa fa-twitter-square"></i></a>
-      </span></p> -->
+      </span></p>
     </footer>
   </body>
 </html>

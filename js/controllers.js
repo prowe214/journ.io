@@ -1,5 +1,11 @@
-myApp.controller('EventsController', ['$scope', '$window', 'facebookService', function ($scope, $window, facebookService) {
-  //FACEBOOK API CALL
+myApp.controller('EventsController', [
+    '$scope',
+    '$window',
+    'facebookService',
+    '$location',
+  function ($scope, $window, facebookService, $location) {
+
+    //FACEBOOK API CALL
       // This is called with the results from from FB.getLoginStatus().
       function statusChangeCallback(response) {
         console.log('statusChangeCallback');
@@ -11,6 +17,7 @@ myApp.controller('EventsController', ['$scope', '$window', 'facebookService', fu
         if (response.status === 'connected') {
           // Logged into your app and Facebook.
           testAPI();
+          $location.path('/');
           console.log('CONNECTING');
           $scope.pullEvents();
           // $scope.getEvents();
@@ -84,17 +91,45 @@ myApp.controller('EventsController', ['$scope', '$window', 'facebookService', fu
         });
       }
   // END FACEBOOK API CALL
+
   $scope.pullEvents = function () {
     console.log('PULLING EVENTS');
           facebookService.getEvents()
             .then(function (data) {
-              console.log('IN THEN STATEMENT');
-              console.log('THIS IS THE THING YOURE LOOKING FOR!!!');
-              console.log('DATA =', data);
               $scope.FBevents = data.events.data;
+              $scope.FBevents.forEach($scope.changeFbDate);
               console.log('EVENTS FOR REAL =', $scope.FBevents);
           });
   };
+  $scope.logout = function () {
+    FB.logout();
+  };
+  $scope.changeFbDate = function (fbEvent) {
+    var newDate = new Date(fbEvent.start_time).getTime();
+    fbEvent.start_time = newDate;
+    if (fbEvent.start_time < Date.now()) {
+      fbEvent.visible = false;
+    } else {
+      fbEvent.visible = true;
+    }
+    console.log('VISIBLE? = ', fbEvent.visible);
+  };
+  $scope.parseDateFrom = function (dateFrom) {
+    // CHANGE   Wed Sep 16 2015 00:00:00 GMT-0600 (MDT)
+    // TO       2015-10-31T19:00:00-0600
+    $scope.startDate = dateFrom.getTime();
+    console.log('START DATE = ', $scope.startDate);
+    // $scope.startDate = result;
+  };
+  $scope.parseDateTo = function (dateTo) {
+    // CHANGE   Wed Sep 16 2015 00:00:00 GMT-0600 (MDT)
+    // TO       2015-10-31T19:00:00-0600
+    $scope.endDate= dateTo.getTime();
+    console.log('END DATE = ', $scope.endDate);
+    // $scope.endDate = result;
+  };
+  $scope.startDate = 0;
+  $scope.endDate = 0;
   $scope.message = 'TEST MESSAGE';
 
 }]);
