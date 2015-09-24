@@ -98,7 +98,6 @@ myApp.controller('EventsController', [
             .then(function (data) {
               $scope.FBevents = data.events.data;
               $scope.FBevents.forEach($scope.changeFbDate);
-              console.log('EVENTS FOR REAL =', $scope.FBevents);
           });
   };
   $scope.logout = function () {
@@ -112,7 +111,6 @@ myApp.controller('EventsController', [
     } else {
       fbEvent.visible = true;
     }
-    console.log('VISIBLE? = ', fbEvent.visible);
   };
   $scope.parseDateFrom = function (dateFrom) {
     // CHANGE   Wed Sep 16 2015 00:00:00 GMT-0600 (MDT)
@@ -130,6 +128,7 @@ myApp.controller('EventsController', [
   };
   $scope.startDate = 0;
   $scope.endDate = 0;
+  $scope.collapsed = true;
   $scope.message = 'TEST MESSAGE';
 
 }]);

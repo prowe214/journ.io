@@ -1,3 +1,13 @@
+#status {
+  background-color: $fadedBlack;
+  font-weight: lighter;
+  text-align: center;
+  margin: 0;
+  padding: 1%;
+  font-size: small;
+  color: white;
+}
+
 main {
 
   margin-top: 10px;
@@ -8,16 +18,65 @@ main {
   .post {
     padding: 3%;
     margin-top: 10px;
-    background-color: rgba(255,255,255,.8);
+    background-color: $fadedWhite;
     border-radius: 3px;
+
 
     h2, h3, h4, h5, p {
       margin: 0;
       padding: 0;
     }
   }
+  .collapsed {
 
-  .hidden {
-    display: none;
+    .collapsed-header {
+      font-size: medium;
+      display: inline-block;
+      max-width: 150px;
+    }
+
+    .collapsed-time {
+      font-size: medium;
+      display: inline-block;
+      float: right;
+    }
+
+    .collapsed-hidden {
+      display: none;
+    }
   }
+
+  .collapsed-false {}
+
+  .dates {
+    h3 {
+      color: white;
+      text-align: center;
+    }
+
+    form {
+      width: 300px;
+      margin: 0 auto;
+
+      label {
+        display: block;
+        text-align: center;
+        color: white;
+      }
+
+      input[type="date"] {
+        width: 100%;
+        text-align: center;
+        padding: 5px;
+        border: none;
+        font-size: large;
+        border-radius: 3px;
+      }
+
+      .formrow {
+        margin-bottom: 2%;
+      }
+    }
+  }
+
 }

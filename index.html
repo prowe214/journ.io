@@ -6,7 +6,6 @@
     <title>Journ.io</title>
     <link rel="stylesheet" href="css/manifest.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="http://connect.facebook.net/en_US/all.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script type="text/javascript" src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
@@ -17,6 +16,7 @@
     <script type="text/javascript" src="js/factories.js"></script>
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/font-awesome-4.4.0/css/font-awesome.min.css">
     <script>
     $('.datepicker').each(function () {
       $(this).datepicker({
@@ -30,43 +30,64 @@
     </script>
   </head>
   <body ng-controller="EventsController">
-    <video autoplay loop poster="polina.jpg" id="bgvid">
+    <video autoplay loop poster="/images/tetons-static.jpg" id="bgvid">
         <source src="/images/tetons.webm" type="video/webm">
-        <source src="polina.mp4" type="video/mp4">
     </video>
     <div id="fb-root"></div>
     <script src="js/fbinit.js"></script>
 
     <header>
       <div class="login">
-        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        <fb:login-button
+          scope="public_profile,email"
+          onlogin="checkLoginState();"
+          autologoutlink="true">
         </fb:login-button>
-
-        <a href="/#/logout" id="logout" ng-click="logout()">Log Out</a>
       </div>
-      <h1>Journio</h1>
+      <h1>Journio  <i class="fa fa-github-square"></i></h1>
     </header>
     <div id="status"></div>
 
-    <div style="background: red; padding: 5px;">
-      <h4 style="color: white;"><strong><em>CURRENT OBJECTIVE:  Style for optimum user experience with current product.</em></strong></h4>
-    </div>
+      <div style="background: red; padding: 5px;">
+        <h4 style="color: white;"><strong><em>CURRENT OBJECTIVE:  Style for optimum user experience with current product.</em></strong></h4>
+      </div>
+
     <main>
       <div class='dates'>
         <form action="/">
           <h3 id="dateheader">I'm traveling...</h3>
-          <label for="dateFrom">From:</label>
-            <input type="date"  name="dateFrom" ng-model="dateFrom" class="datepicker" ng-change="parseDateFrom(dateFrom)" id="date_1">
-          <label for="dateTo">To:</label>
-            <input type="date" name="dateTo" ng-model="dateTo" class="datepicker" ng-change="parseDateTo(dateTo)" id='date_2'>
+          <div class="formrow">
+            <label for="dateFrom">From:</label>
+              <input
+                type="date"
+                name="dateFrom"
+                ng-model="dateFrom"
+                class="datepicker"
+                ng-change="parseDateFrom(dateFrom)"
+                id="date_1">
+          </div>
+          <div class="formrow">
+            <label for="dateTo">To:</label>
+              <input
+                type="date"
+                name="dateTo"
+                ng-model="dateTo"
+                class="datepicker"
+                ng-change="parseDateTo(dateTo)"
+                id='date_2'>
+          </div>
         </form>
       </div>
-      <div class="post" ng-repeat="e in FBevents | dateFilter:this | orderBy: 'start_time'" >
-        <h2>{{e.name}}</h2>
-        <h3>{{e.start_time | date}}</h3>
-        <h3>{{e.place.name}}</h3>
-        <p ng-repeat="paragraph in e.description | richText track by $index">{{paragraph}}</p>
-        <a href="https://www.facebook.com/events/{{e.id}}">Visit Facebook Event Page</a>
+      <div
+            class="post collapsed"
+            ng-repeat="e in FBevents | dateFilter:this | orderBy: 'start_time'"
+            ng-click="collapsed = !collapsed"
+            ng-class="{true: 'collapsed', false: 'collapsed-false'}[collapsed]">
+        <h2 ng-class="{true: 'collapsed-header', false: ''}[collapsed]">{{e.name}}</h2>
+        <h3 ng-class="{true: 'collapsed-time', false: ''}[collapsed]">{{e.start_time | date: 'EEE MMM d, h:mma'}}</h3>
+        <h3 ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]">{{e.place.name}}</h3>
+        <p  ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]" ng-repeat="paragraph in e.description | richText track by $index">{{paragraph}}</p>
+        <a  ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]" href="https://www.facebook.com/events/{{e.id}}">Visit Facebook Event Page</a>
       </div>
     </main>
     <footer>

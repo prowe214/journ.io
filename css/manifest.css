@@ -54,6 +54,15 @@ header {
       bottom: 3px;
       font-size: small; }
 
+#status {
+  background-color: rgba(0, 0, 0, 0.5);
+  font-weight: lighter;
+  text-align: center;
+  margin: 0;
+  padding: 1%;
+  font-size: small;
+  color: white; }
+
 main {
   margin-top: 10px;
   margin-left: 3%;
@@ -67,8 +76,35 @@ main {
     main .post h2, main .post h3, main .post h4, main .post h5, main .post p {
       margin: 0;
       padding: 0; }
-  main .hidden {
+  main .collapsed .collapsed-header {
+    font-size: medium;
+    display: inline-block;
+    max-width: 150px; }
+  main .collapsed .collapsed-time {
+    font-size: medium;
+    display: inline-block;
+    float: right; }
+  main .collapsed .collapsed-hidden {
     display: none; }
+  main .dates h3 {
+    color: white;
+    text-align: center; }
+  main .dates form {
+    width: 300px;
+    margin: 0 auto; }
+    main .dates form label {
+      display: block;
+      text-align: center;
+      color: white; }
+    main .dates form input[type="date"] {
+      width: 100%;
+      text-align: center;
+      padding: 5px;
+      border: none;
+      font-size: large;
+      border-radius: 3px; }
+    main .dates form .formrow {
+      margin-bottom: 2%; }
 
 footer {
   color: rgba(255, 255, 255, 0.75);

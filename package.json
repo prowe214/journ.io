@@ -1,16 +1,17 @@
 {
-	"name": "Joun.io",
-	"version": "0.0.1",
-	"description": "API driven itinerary application",
-	"scripts": {
-		"start": "node server.js"
-	},
-	"dependencies": {
-		"connect": "^2.0.0",
-		"serve-static": "^1.5.0"
-	},
-	"repository": {},
-	"engines": {
-		"node": "0.12.x"
-	}
+  "name": "Joun.io",
+  "version": "0.0.1",
+  "description": "API driven itinerary application",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "browserify": "^11.1.0",
+    "connect": "^2.0.0",
+    "serve-static": "^1.5.0"
+  },
+  "repository": {},
+  "engines": {
+    "node": "0.12.x"
+  }
 }
