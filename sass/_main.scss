@@ -21,6 +21,11 @@ main {
     background-color: $fadedWhite;
     border-radius: 3px;
 
+    i {
+      float: right;
+      font-size: x-large;
+      margin-left: 3%;
+    }
 
     h2, h3, h4, h5, p {
       margin: 0;

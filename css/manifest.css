@@ -73,6 +73,10 @@ main {
     margin-top: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 3px; }
+    main .post i {
+      float: right;
+      font-size: x-large;
+      margin-left: 3%; }
     main .post h2, main .post h3, main .post h4, main .post h5, main .post p {
       margin: 0;
       padding: 0; }

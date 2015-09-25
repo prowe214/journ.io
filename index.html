@@ -84,7 +84,9 @@
             ng-repeat="e in FBevents | dateFilter:this | orderBy: 'start_time'"
             ng-click="collapsed = !collapsed"
             ng-class="{true: 'collapsed', false: 'collapsed-false'}[collapsed]">
-        <h2 ng-class="{true: 'collapsed-header', false: ''}[collapsed]">{{e.name}}</h2>
+        <h2 ng-class="{true: 'collapsed-header', false: ''}[collapsed]">
+          {{e.name}} </h2>
+          <i class="ion-arrow-down-b"></i>
         <h3 ng-class="{true: 'collapsed-time', false: ''}[collapsed]">{{e.start_time | date: 'EEE MMM d, h:mma'}}</h3>
         <h3 ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]">{{e.place.name}}</h3>
         <p  ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]" ng-repeat="paragraph in e.description | richText track by $index">{{paragraph}}</p>
