@@ -17,7 +17,6 @@ myApp.controller('EventsController', [
         if (response.status === 'connected') {
           // Logged into your app and Facebook.
           testAPI();
-          $location.path('/');
           console.log('CONNECTING');
           $scope.pullEvents();
           // $scope.getEvents();
