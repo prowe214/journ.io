@@ -109,10 +109,14 @@ main {
 footer {
   color: rgba(255, 255, 255, 0.75);
   padding-bottom: 10px; }
-  footer a {
-    color: rgba(255, 255, 255, 0.75); }
   footer p {
     padding-left: 3%;
     padding-right: 3%; }
+    footer p a {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: x-large; }
+      footer p a i {
+        font-size: x-large;
+        margin-left: 10px; }
   footer .links {
     float: right; }

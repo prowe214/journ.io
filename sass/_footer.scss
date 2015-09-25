@@ -2,13 +2,21 @@ footer {
   color: rgba(255,255,255,.75);
   padding-bottom: 10px;
 
-  a {
-    color: rgba(255,255,255,.75);
-  }
 
   p {
     padding-left: 3%;
     padding-right: 3%;
+
+
+    a {
+      color: rgba(255,255,255,.75);
+      font-size: x-large;
+
+      i {
+        font-size: x-large;
+        margin-left: 10px;
+      }
+    }
   }
 
   .links {
