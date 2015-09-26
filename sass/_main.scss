@@ -32,12 +32,11 @@ main {
       padding: 0;
     }
   }
-  .collapsed {
+  post.collapsed {
 
     .collapsed-header {
       font-size: medium;
       display: inline-block;
-      max-width: 150px;
     }
 
     .collapsed-time {
