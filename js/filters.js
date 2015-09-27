@@ -1,7 +1,7 @@
 
 myApp.filter('richText', function () {
   return function (text) {
-    return text.split('↵');
+    return text.replace(/↵/g, '<br/>');
   };
 });
 

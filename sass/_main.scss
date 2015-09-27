@@ -11,18 +11,25 @@
 main {
 
   margin-top: 10px;
-  margin-left: 3%;
-  margin-right: 3%;
+  margin-left: 25%;
+  margin-right: 25%;
   margin-bottom: 10px;
+
+  div.post:hover {
+    box-shadow: 0px 0px 20px white;
+  }
 
   .post {
     padding: 3%;
     margin-top: 10px;
     background-color: $fadedWhite;
     border-radius: 3px;
+    height: auto;
+    transition:0.2s linear all;
 
     i {
       float: right;
+      display: inline-block;
       font-size: x-large;
       margin-left: 3%;
     }
@@ -32,7 +39,7 @@ main {
       padding: 0;
     }
   }
-  post.collapsed {
+  .collapsed {
 
     .collapsed-header {
       font-size: medium;
@@ -41,16 +48,14 @@ main {
 
     .collapsed-time {
       font-size: medium;
-      display: inline-block;
       float: right;
+      display: inline-block;
     }
 
     .collapsed-hidden {
       display: none;
     }
   }
-
-  .collapsed-false {}
 
   .dates {
     h3 {
