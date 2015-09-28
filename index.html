@@ -86,16 +86,16 @@
             ng-repeat="e in FBevents | dateFilter:this | orderBy: 'start_time'"
             ng-click="collapsed = !collapsed"
             ng-class="{true: 'collapsed', false: 'collapsed-false'}[collapsed]">
-        <i class="collapsed-icon ion-arrow-down-b" ng-class="{true: 'collapsed-icon ion-arrow-down-b', false: 'ion-arrow-up-b'}[collapsed]"></i>
+        <i class="ion-arrow-down-b" ng-class="{true: 'ion-arrow-down-b', false: 'ion-arrow-up-b'}[collapsed]"></i>
         <h2 ng-class="{true: 'collapsed-header', false: ''}[collapsed]">
           {{e.name}} </h2>
         <h3 ng-class="{true: 'collapsed-time', false: ''}[collapsed]">
           {{e.start_time | date: 'EEE MMM d, h:mma'}}</h3>
-        <h3 ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]">
+        <h3 ng-hide="collapsed" ><!--ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]"-->
           {{e.place.name}}</h3>
-        <p  ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]" >
+        <p ng-hide="collapsed">
           {{e.description}}</p>
-        <a  ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]"
+        <a ng-hide="collapsed"
           href="https://www.facebook.com/events/{{e.id}}">Visit Facebook Event Page</a>
       </div>
     </main>

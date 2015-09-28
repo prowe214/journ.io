@@ -25,23 +25,31 @@ main {
     background-color: $fadedWhite;
     border-radius: 3px;
     height: auto;
-    transition:0.2s linear all;
+    transition: 0.2s linear all;
+    max-height: 1000px;
 
     i {
       float: right;
-      display: inline-block;
+      display: inline;
       font-size: x-large;
       margin-left: 3%;
     }
 
     h2, h3, h4, h5, p {
       margin: 0;
-      margin-bottom: 5px;
+      margin-bottom: 15px;
       padding: 0;
     }
   }
-  
+
   .collapsed {
+
+    h2, h3, h4, h5, p {
+      margin: 0;
+      padding: 0;
+      display: inline;
+
+    }
 
     .collapsed-header {
       font-size: medium;
@@ -51,12 +59,9 @@ main {
     .collapsed-time {
       font-size: medium;
       float: right;
-      display: inline-block;
+      display: inline;
     }
 
-    .collapsed-hidden {
-      visibility: hidden;
-    }
   }
 
   .dates {

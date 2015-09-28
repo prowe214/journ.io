@@ -27,6 +27,11 @@ video#bgvid {
   background: url(../images/tetons-static.jpg) no-repeat;
   background-size: cover; }
 
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
+
 header {
   background-color: black;
   margin: 0;
@@ -76,25 +81,28 @@ main {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 3px;
     height: auto;
-    transition: 0.2s linear all; }
+    transition: 0.2s linear all;
+    max-height: 1000px; }
     main .post i {
       float: right;
-      display: inline-block;
+      display: inline;
       font-size: x-large;
       margin-left: 3%; }
     main .post h2, main .post h3, main .post h4, main .post h5, main .post p {
       margin: 0;
-      margin-bottom: 5px;
+      margin-bottom: 15px;
       padding: 0; }
+  main .collapsed h2, main .collapsed h3, main .collapsed h4, main .collapsed h5, main .collapsed p {
+    margin: 0;
+    padding: 0;
+    display: inline; }
   main .collapsed .collapsed-header {
     font-size: medium;
     display: inline-block; }
   main .collapsed .collapsed-time {
     font-size: medium;
     float: right;
-    display: inline-block; }
-  main .collapsed .collapsed-hidden {
-    display: none; }
+    display: inline; }
   main .dates h3 {
     color: white;
     text-align: center; }
