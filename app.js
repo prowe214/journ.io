@@ -6,7 +6,7 @@
 
 // This application uses express as its web server
 // for more info, see: http://expressjs.com
-var myApp = angular.module('journio', ['ngRoute', 'firebase']);
+var myApp = angular.module('journio', ['firebase']);
 // var express = require('express');
 // var favicon = require('serve-favicon');
 //

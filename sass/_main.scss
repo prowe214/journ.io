@@ -36,9 +36,11 @@ main {
 
     h2, h3, h4, h5, p {
       margin: 0;
+      margin-bottom: 5px;
       padding: 0;
     }
   }
+  
   .collapsed {
 
     .collapsed-header {
@@ -53,7 +55,7 @@ main {
     }
 
     .collapsed-hidden {
-      display: none;
+      visibility: hidden;
     }
   }
 

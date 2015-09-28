@@ -1,9 +1,10 @@
 
-myApp.filter('richText', function () {
+myApp.filter('richText', ['$sce', function ($sce) {
   return function (text) {
-    return text.replace(/↵/g, '<br/>');
+    text = text.split('↵'); //\u21b5
+    console.log('TEXT -', text);
   };
-});
+}]);
 
 myApp.filter('dateFilter', function () {
   return function (input, scope) {

@@ -9,12 +9,10 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <script src="http://connect.facebook.net/en_US/all.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <script type="text/javascript" src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
+    <script src="/node_modules/angular/angular.js"></script>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="js/routes.js"></script>
     <script type="text/javascript" src="js/controllers.js"></script>
     <script type="text/javascript" src="js/filters.js"></script>
     <script type="text/javascript" src="js/factories.js"></script>
@@ -51,11 +49,11 @@
     </header>
     <div id="status"></div>
 
-      <div style="background: red; padding: 5px;">
+      <!-- <div style="background: red; padding: 5px;">
         <h4 style="color: white;">
-          <strong><em>CURRENT OBJECTIVE:  Save user settings to database
-            which persists between sessions.</em></strong></h4>
-      </div>
+          <strong><em>CURRENT OBJECTIVE:  Split descriptions into proper
+            formatting.</em></strong></h4>
+      </div> -->
 
     <main>
       <div class='dates'>
@@ -96,7 +94,7 @@
         <h3 ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]">
           {{e.place.name}}</h3>
         <p  ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]" >
-          {{e.description | richText}}</p>
+          {{e.description}}</p>
         <a  ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]"
           href="https://www.facebook.com/events/{{e.id}}">Visit Facebook Event Page</a>
       </div>

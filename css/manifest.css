@@ -84,6 +84,7 @@ main {
       margin-left: 3%; }
     main .post h2, main .post h3, main .post h4, main .post h5, main .post p {
       margin: 0;
+      margin-bottom: 5px;
       padding: 0; }
   main .collapsed .collapsed-header {
     font-size: medium;

@@ -32,3 +32,9 @@ video#bgvid {
     background: url(../images/tetons-static.jpg) no-repeat;
     background-size: cover;
 }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
