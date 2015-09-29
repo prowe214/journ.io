@@ -19,3 +19,15 @@ myApp.filter('dateFilter', function () {
     return results;
   };
 });
+
+myApp.filter('fileFilter', function () {
+  return function (files, e) {
+    var results = [];
+    for (var i = 0; i < files.length; i++) {
+      if (files[i].eventId === e.id) {
+        results.push(files[i]);
+      }
+    }
+    return results;
+  };
+});

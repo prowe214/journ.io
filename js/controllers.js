@@ -11,7 +11,9 @@ myApp.controller('EventsController', [
     $scope.storedUserData = $firebaseArray(ref); // Firebase data comes in as an array w/ id properties
     $scope.startDate = 0;
     $scope.endDate = 0;
+    $scope.userFiles = [];
     $scope.collapsed = true;
+    $scope.fileform = false;
     $scope.currentUser = '';
     $scope.currentRecord = '';
     $scope.pullEvents = function () {
@@ -31,6 +33,7 @@ myApp.controller('EventsController', [
           $scope.currentRecord = $scope.storedUserData[i].$id;
           $scope.startDate = $scope.storedUserData[i].startDate;
           $scope.endDate = $scope.storedUserData[i].endDate;
+          $scope.userFiles = $scope.storedUserData[i].files;
           return;
         }
       }
@@ -47,20 +50,19 @@ myApp.controller('EventsController', [
       }
       $scope.storedUserData.$add({userId: userData.id});
     };
-    $scope.addFile = function () {
-      console.log('USER DATA =', $scope.storedUserData);
+    $scope.addFile = function (e) {
       for (var i = 0; i < $scope.storedUserData.length; i++) {
         if ($scope.storedUserData[i].userId == $scope.currentUser.id) {
           var user = $scope.storedUserData[i];
           if (user.files) {
-            console.log('HOORAY THERE ARE FILES!');
+            user.files.push({eventId: e.id, nickname: this.nickname, fileUrl: this.fileUrl});
           } else {
-            console.log('AINT NO FILES HERE');
-            // user.files = [{nickname: this.nickname, fileUrl: this.fileUrl}]
+            user.files = [{eventId: e.id, nickname: this.nickname, fileUrl: this.fileUrl}];
           }
           $scope.storedUserData.$save(user);
-        }
-        else {console.log('NO MATCH');}
+          $scope.fileform = false;
+          return;
+        } else { console.log('NO MATCH'); }
       }
     };
     $scope.logout = function () {
@@ -82,7 +84,6 @@ myApp.controller('EventsController', [
     $scope.parseDateTo = function (dateTo) {
       $scope.endDate= dateTo.getTime();
       $scope.updateSettings($scope.currentUser);
-      console.log('USER DATA =', $scope.storedUserData);
     };
 
     //FACEBOOK API CALL

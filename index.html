@@ -84,9 +84,8 @@
       <div
             class="post collapsed"
             ng-repeat="e in FBevents | dateFilter:this | orderBy: 'start_time'"
-            ng-click="collapsed = !collapsed"
             ng-class="{true: 'collapsed', false: 'collapsed-false'}[collapsed]">
-        <i class="ion-arrow-down-b" ng-class="{true: 'ion-arrow-down-b', false: 'ion-arrow-up-b'}[collapsed]"></i>
+        <i ng-click="collapsed = !collapsed" class="ion-arrow-down-b" ng-class="{true: 'ion-arrow-down-b', false: 'ion-arrow-up-b'}[collapsed]"></i>
         <h2 ng-class="{true: 'collapsed-header', false: ''}[collapsed]">
           {{e.name}} </h2>
         <h3 ng-class="{true: 'collapsed-time', false: ''}[collapsed]">
@@ -95,18 +94,23 @@
           {{e.place.name}}</h3>
         <p ng-hide="collapsed">
           {{e.description}}</p>
+        <div class="files" ng-hide="collapsed" ng-repeat="file in $parent.userFiles | fileFilter:e">
+          <a ng-href="{{file.fileUrl}}">{{file.nickname}}</a>
+        </div>
+        <div class="add-file" ng-show="fileform">
+          <form ng-submit="addFile(e)">
+            <label for="nickname">File Nickname: </label>
+              <input type="text" name="nickname" ng-model="nickname">
+            <label for="fileUrl">File URL: </label>
+              <input type="text" name="fileUrl" ng-model="fileUrl">
+            <input type="submit" ng-click="fileform = false">
+          </form>
+        </div>
         <div ng-hide="collapsed" class="links">
-          <div class="add-file">
-            <form ng-submit="addFile()">
-              <label for="nickname">File Nickname: </label>
-                <input type="text" name="nickname" ng-model="nickname">
-              <label for="fileUrl">File URL: </label>
-                <input type="text" name="fileUrl" ng-model="fileUrl">
-              <input type="submit">
-            </form>
-          </div>
-          <a  class="fb-link clearfix"
+          <a  class="link fb-link clearfix"
             href="https://www.facebook.com/events/{{e.id}}">Visit Facebook Event Page</a>
+          <a class="link form-link" ng-click="fileform = true" ng-hide="fileform">Add A File</a>
+          <a class="link form-link" ng-click="fileform = false" ng-show="fileform">Hide Form</a>
         </div>
       </div>
     </main>

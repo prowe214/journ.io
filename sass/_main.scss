@@ -26,13 +26,14 @@ main {
     border-radius: 3px;
     height: auto;
     transition: 0.2s linear all;
-    max-height: 1000px;
 
     i {
       float: right;
       display: inline;
       font-size: x-large;
       margin-left: 3%;
+      margin-top: -15px;
+      padding: 10px;
     }
 
     h2, h3, h4, h5, p {
@@ -41,11 +42,24 @@ main {
       padding: 0;
     }
 
+    div.files {
+      a {
+        display: block;
+        text-align: center;
+        background-color: rgba(13,65,99,1);
+        border-radius: 3px;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+        margin-bottom: 10px;
+        font-weight: lighter;
+      }
+    }
+
     div.links {
       height: 25px;
 
-      .fb-link {
-        background-color: rgba(59, 89, 152, 1);
+      .link {
         padding: 10px;
         border-radius: 3px;
         color: white;
@@ -54,6 +68,13 @@ main {
         font-size: small;
         text-align: right;
         float: right;
+        margin-left: 10px;
+      }
+      .fb-link {
+        background-color: rgba(59, 89, 152, 1);
+      }
+      .form-link {
+        background-color: rgba(13,56,87,1);
       }
     }
   }
