@@ -13,7 +13,7 @@ myApp.controller('EventsController', [
     $scope.endDate = 0;
     $scope.collapsed = true;
     $scope.currentUser = '';
-    console.log('EVENTS =', $scope.FBevents);
+    $scope.currentRecord = '';
     $scope.pullEvents = function () {
             facebookService.getEvents()
               .then(function (data) {
@@ -26,16 +26,11 @@ myApp.controller('EventsController', [
             });
     };
     $scope.checkSettings = function (userData) {
-      console.log('CHECKING SETTINGS');
-      console.log('USER DATA = ', userData);
-      console.log('CURRENT START DATE', $scope.startDate);
-      console.log('CURRENT END DATE', $scope.endDate);
       for (var i = 0; i < $scope.storedUserData.length; i++) {
         if ($scope.storedUserData[i].userId == userData.id) {
+          $scope.currentRecord = $scope.storedUserData[i].$id;
           $scope.startDate = $scope.storedUserData[i].startDate;
-          console.log('ADJUSTED START DATE', $scope.startDate);
           $scope.endDate = $scope.storedUserData[i].endDate;
-          console.log('ADJUSTED END DATE', $scope.endDate);
           return;
         }
       }
@@ -44,15 +39,29 @@ myApp.controller('EventsController', [
     $scope.updateSettings = function (userData) {
       for (var i = 0; i < $scope.storedUserData.length; i++) {
         if ($scope.storedUserData[i].userId == userData.id) {
-          $scope.currentRecord = $scope.storedUserData[i].$id;
           $scope.storedUserData[i].startDate = $scope.startDate;
           $scope.storedUserData[i].endDate = $scope.endDate;
           $scope.storedUserData.$save($scope.storedUserData[i]);
-          console.log('NEW: ', $scope.storedUserData[i]);
           return;
         }
       }
       $scope.storedUserData.$add({userId: userData.id});
+    };
+    $scope.addFile = function () {
+      console.log('USER DATA =', $scope.storedUserData);
+      for (var i = 0; i < $scope.storedUserData.length; i++) {
+        if ($scope.storedUserData[i].userId == $scope.currentUser.id) {
+          var user = $scope.storedUserData[i];
+          if (user.files) {
+            console.log('HOORAY THERE ARE FILES!');
+          } else {
+            console.log('AINT NO FILES HERE');
+            // user.files = [{nickname: this.nickname, fileUrl: this.fileUrl}]
+          }
+          $scope.storedUserData.$save(user);
+        }
+        else {console.log('NO MATCH');}
+      }
     };
     $scope.logout = function () {
       FB.logout();

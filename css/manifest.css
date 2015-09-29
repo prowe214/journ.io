@@ -92,6 +92,18 @@ main {
       margin: 0;
       margin-bottom: 15px;
       padding: 0; }
+    main .post div.links {
+      height: 25px; }
+      main .post div.links .fb-link {
+        background-color: #3b5998;
+        padding: 10px;
+        border-radius: 3px;
+        color: white;
+        text-decoration: none;
+        font-weight: lighter;
+        font-size: small;
+        text-align: right;
+        float: right; }
   main .collapsed h2, main .collapsed h3, main .collapsed h4, main .collapsed h5, main .collapsed p {
     margin: 0;
     padding: 0;

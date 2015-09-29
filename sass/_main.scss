@@ -40,6 +40,22 @@ main {
       margin-bottom: 15px;
       padding: 0;
     }
+
+    div.links {
+      height: 25px;
+
+      .fb-link {
+        background-color: rgba(59, 89, 152, 1);
+        padding: 10px;
+        border-radius: 3px;
+        color: white;
+        text-decoration: none;
+        font-weight: lighter;
+        font-size: small;
+        text-align: right;
+        float: right;
+      }
+    }
   }
 
   .collapsed {

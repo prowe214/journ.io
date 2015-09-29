@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <script src="http://connect.facebook.net/en_US/all.js"></script>
-    <script src="/node_modules/angular/angular.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js'></script>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
@@ -95,8 +95,19 @@
           {{e.place.name}}</h3>
         <p ng-hide="collapsed">
           {{e.description}}</p>
-        <a ng-hide="collapsed"
-          href="https://www.facebook.com/events/{{e.id}}">Visit Facebook Event Page</a>
+        <div ng-hide="collapsed" class="links">
+          <div class="add-file">
+            <form ng-submit="addFile()">
+              <label for="nickname">File Nickname: </label>
+                <input type="text" name="nickname" ng-model="nickname">
+              <label for="fileUrl">File URL: </label>
+                <input type="text" name="fileUrl" ng-model="fileUrl">
+              <input type="submit">
+            </form>
+          </div>
+          <a  class="fb-link clearfix"
+            href="https://www.facebook.com/events/{{e.id}}">Visit Facebook Event Page</a>
+        </div>
       </div>
     </main>
     <footer>
