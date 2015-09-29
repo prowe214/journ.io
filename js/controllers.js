@@ -8,7 +8,7 @@ myApp.controller('EventsController', [
   function ($scope, $window, facebookService, $location, $firebaseArray, $sce) {
     var ref = new Firebase("https://journio.firebaseio.com");
 
-    $scope.storedUserData = $firebaseArray(ref); // Firebase data comes in as an array w/ id properties
+    $scope.storedUserData = $firebaseArray(ref);
     $scope.startDate = 0;
     $scope.endDate = 0;
     $scope.userFiles = [];
@@ -128,4 +128,5 @@ myApp.controller('EventsController', [
       }(document, 'script', 'facebook-jssdk'));
 
   // END FACEBOOK API CALL
+
 }]);

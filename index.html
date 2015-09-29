@@ -49,12 +49,6 @@
     </header>
     <div id="status"></div>
 
-      <!-- <div style="background: red; padding: 5px;">
-        <h4 style="color: white;">
-          <strong><em>CURRENT OBJECTIVE:  Split descriptions into proper
-            formatting.</em></strong></h4>
-      </div> -->
-
     <main>
       <div class='dates'>
         <form action="/">
@@ -85,9 +79,8 @@
             class="post collapsed"
             ng-repeat="e in FBevents | dateFilter:this | orderBy: 'start_time'"
             ng-class="{true: 'collapsed', false: 'collapsed-false'}[collapsed]">
-        <i ng-click="collapsed = !collapsed" class="ion-arrow-down-b" ng-class="{true: 'ion-arrow-down-b', false: 'ion-arrow-up-b'}[collapsed]"></i>
-        <h2 ng-class="{true: 'collapsed-header', false: ''}[collapsed]">
-          {{e.name}} </h2>
+        <h2 ng-click="collapsed = !collapsed" ng-class="{true: 'collapsed-header', false: ''}[collapsed]">
+          {{e.name}} <i class="ion-arrow-down-b" ng-class="{true: 'ion-arrow-down-b', false: 'ion-arrow-up-b'}[collapsed]"></i></h2>
         <h3 ng-class="{true: 'collapsed-time', false: ''}[collapsed]">
           {{e.start_time | date: 'EEE MMM d, h:mma'}}</h3>
         <h3 ng-hide="collapsed" ><!--ng-class="{true: 'collapsed-hidden', false: ''}[collapsed]"-->
@@ -102,7 +95,7 @@
             <label for="nickname">File Nickname: </label>
               <input type="text" name="nickname" ng-model="nickname">
             <label for="fileUrl">File URL: </label>
-              <input type="text" name="fileUrl" ng-model="fileUrl">
+              <input type="url" name="fileUrl" ng-model="fileUrl">
             <input type="submit" ng-click="fileform = false">
           </form>
         </div>

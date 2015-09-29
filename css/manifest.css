@@ -89,6 +89,8 @@ main {
       margin-left: 3%;
       margin-top: -15px;
       padding: 10px; }
+    main .post h2 {
+      cursor: pointer; }
     main .post h2, main .post h3, main .post h4, main .post h5, main .post p {
       margin: 0;
       margin-bottom: 15px;
@@ -102,7 +104,11 @@ main {
       color: white;
       text-decoration: none;
       margin-bottom: 10px;
-      font-weight: lighter; }
+      font-weight: lighter;
+      cursor: pointer; }
+    main .post div.files a:hover {
+      box-shadow: 0px 0px 20px black;
+      transition: 0.2s linear all; }
     main .post div.links {
       height: 25px; }
       main .post div.links .link {
@@ -114,7 +120,8 @@ main {
         font-size: small;
         text-align: right;
         float: right;
-        margin-left: 10px; }
+        margin-left: 10px;
+        cursor: pointer; }
       main .post div.links .fb-link {
         background-color: #3b5998; }
       main .post div.links .form-link {
@@ -125,11 +132,12 @@ main {
     display: inline; }
   main .collapsed .collapsed-header {
     font-size: medium;
-    display: inline-block; }
+    display: block; }
   main .collapsed .collapsed-time {
     font-size: medium;
     float: right;
-    display: inline; }
+    display: inline;
+    margin-top: -17px; }
   main .dates h3 {
     color: white;
     text-align: center; }
