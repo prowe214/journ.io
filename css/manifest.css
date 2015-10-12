@@ -59,6 +59,18 @@ header {
       bottom: 3px;
       font-size: small; }
 
+aside {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-left: 3%;
+  margin-right: 78%;
+  margin-top: 15px;
+  padding: 15px; }
+  aside p, aside li {
+    font-size: small; }
+  aside h3, aside h4 {
+    text-align: center; }
+
 #status {
   background-color: rgba(0, 0, 0, 0.5);
   font-weight: lighter;

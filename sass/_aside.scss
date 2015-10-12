@@ -1,0 +1,16 @@
+aside {
+  position: absolute;
+  background-color: $fadedWhite;
+  margin-left: 3%;
+  margin-right: 78%;
+  margin-top: 15px;
+  padding: 15px;
+
+  p, li {
+    font-size: small;
+  }
+
+  h3, h4 {
+    text-align: center;
+  }
+}
